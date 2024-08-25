@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Decision Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_result.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Loan Decision</h1>
+        <div class="decision {{ 'approved' if decision == 'Approved' else 'denied' }}">
+            <p>{{ decision }}</p>
+        </div>
+        <h2>SHAP Explanation</h2>
+        <div class="explanation">
+            <p>{{ shap_explanation|safe }}</p>
+        </div>
+        <h2>Lime Explanation</h2>
+        <div class="explanation">
+            <p>{{ lime_explanation|safe }}</p>
+        </div>
+        <a href="{{ url_for('home') }}">Back to form</a>
+    </div>
+</body>
+
+</html>

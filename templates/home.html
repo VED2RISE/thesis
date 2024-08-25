@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Application Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Loan Application Form</h1>
+        <div class="sub-header">
+            This is an Explainable Loan Approval System created by MSc Computing student Ivan Smirnov. Please fill out the forms to see whether the loan is granted for you. Please note that the form is anonymous and your data is not stored anywhere.
+        </div>
+        <form action="/" method="post">
+            <!-- 1. Duration in Month -->
+            <div class="question">
+                <p>1. Duration in month:</p>
+                <input type="number" name="duration" min="4" max="62" required>
+            </div>
+
+            <!-- 2. Credit Amount -->
+            <div class="question">
+                <p>2. Credit amount (£):</p>
+                <input type="number" name="credit_amount" min="217" max="7550" step="0.01" required>
+            </div>
+
+            <!-- 3. Installment Rate in Percentage of Disposable Income -->
+            <div class="question">
+                <p>3. Installment rate of disposable income. If 10, input 1, if 20, then 2 etc.:</p>
+                <input type="number" name="installment_commitment" min="1" max="4" required>
+            </div>
+
+            <!-- 4. Present Residence Since -->
+            <div class="question">
+                <p>4. Present residence since (years):</p>
+                <input type="number" name="residence_since" min="1" max="75" required>
+            </div>
+
+            <!-- 5. Age in Years -->
+            <div class="question">
+                <p>5. Age in years:</p>
+                <input type="number" name="age" min="18" max="75" required>
+            </div>
+
+            <!-- 6. Number of Existing Credits at This Bank -->
+            <div class="question">
+                <p>6. Number of existing credits at this bank:</p>
+                <input type="number" name="existing_credits" min="0" max="4" required>
+            </div>
+
+            <!-- 7. Number of People Being Liable -->
+            <div class="question">
+                <p>7. Number of people being liable to provide maintenance for:</p>
+                <input type="number" name="num_dependents" min="0" max="5" required>
+            </div>
+
+            <!-- 8. Telephone -->
+            <div class="question">
+                <p>8. Do you own a telephone?</p>
+                <ul class="options">
+                    <li><label><input type="radio" name="own_telephone" value="0" required> No</label></li>
+                    <li><label><input type="radio" name="own_telephone" value="1"> Yes</label></li>
+                </ul>
+            </div>
+
+            <!-- 9. Foreign Worker -->
+            <div class="question">
+                <p>9. Are you a foreign worker?</p>
+                <ul class="options">
+                    <li><label><input type="radio" name="foreign_worker" value="0" required> Yes</label></li>
+                    <li><label><input type="radio" name="foreign_worker" value="1"> No</label></li>
+                </ul>
+            </div>
+
+            <!-- 10. Checking Account Status -->
+            <div class="question">
+                <p>10. What is your checking account status?</p>
+                <ul class="options">
+                    <li><label><input type="radio" name="checking_status" value="0 <= ... < £87.45" required> £0.00 - £87.45</label></li>
+                    <li><label><input type="radio" name="checking_status" value="< £0"> My balance is negative</label></li>
+                    <li><label><input type="radio" name="checking_status" value=">= £87.45 / salary assignments for at least 1 year"> >= £87.45 / salary assignments for at least 1 year</label></li>
+                    <li><label><input type="radio" name="checking_status" value="no checking account"> No checking account</label></li>
+                </ul>
+            </div>
+
+            <!-- 11. Credit History -->
+            <div class="question">
+                <p>11. What is your credit history?</p>
+                <ul class="options">
+                    <li><label><input type="radio" name="credit_history" value="all credits at this bank paid back duly" required> All credits at this bank paid back duly</label></li>
+                    <li><label><input type="radio" name="credit_history" value="critical account/ other credits existing (not at this bank)"> Critical account/ other credits existing (not at this bank)</label></li>
+                    <li><label><input type="radio" name="credit_history" value="delay in paying off in the past"> Delay in paying off in the past</label></li>
+                    <li><label><input type="radio" name="credit_history" value="existing credits paid back duly till now"> Existing credits paid back duly till now</label></li>
+                    <li><label><input type="radio" name="credit_history" value="no credits taken/ all credits paid duly"> No credits taken/ all credits paid duly</label></li>
+                </ul>
+            </div>
+
+            <!-- 12. Purpose -->
+            <div class="question">
+                <p>12. What is the purpose of the loan?</p>
+                <ul class="options">
+                    <li><label><input type="radio" name="purpose" value="business" required> Business</label></li>
+                    <li><label><input type="radio" name="purpose" value="car (new)"> Car (new)</label></li>
+                    <li><label><input type="radio" name="purpose" value="car (used)"> Car (used)</label></li>
+                    <li><label><input type="radio" name="purpose" value="domestic appliances"> Domestic appliances</label></li>
+                    <li><label><input type="radio" name="purpose" value="education"> Education</label></li>
+                    <li><label><input type="radio" name="purpose" value="furniture/equipment"> Furniture/equipment</label></li>
+                    <li><label><input type="radio" name="purpose" value="others"> Others</label></li>
+                    <li><label><input type="radio" name="purpose" value="radio/television"> Radio/television</label></li>
+                    <li><label><input type="radio" name="purpose" value="repairs"> Repairs</label></li>
+                    <li><label><input type="radio" name="purpose" value="retraining"> Retraining</label></li>
+                </ul>
+            </div>
+
+            <!-- 13. Savings Account/Bonds -->
+            <div class="question">
+                <p>13. What is your savings account status?</p>
+                <ul class="options">
+                    <li><label><input type="radio" name="savings_status" value="£43.46 <= ... < £217.30" required> £43.46 <= ... < £217.30</label></li>
+                    <li><label><input type="radio" name="savings_status" value="£217.30 <= ... < £434.60"> £217.30 <= ... < £434.60</label></li>
+                    <li><label><input type="radio" name="savings_status" value="< £43.46"> < £43.46</label></li>
+                    <li><label><input type="radio" name="savings_status" value=">= £434.60"> >= £434.60</label></li>
+                    <li><label><input type="radio" name="savings_status" value="unknown/ no savings account"> Unknown/ no savings account</label></li>
+                </ul>
+            </div>
+
+            <!-- 14. Employment -->
+            <div class="question">
+                <p>14. What is your employment status?</p>
+                <ul class="options">
+                    <li><label><input type="radio" name="employment" value="1 <= ... < 4 years" required> 1 <= ... < 4 years</label></li>
+                    <li><label><input type="radio" name="employment" value="4 <= ... < 7 years"> 4 <= ... < 7 years</label></li>
+                    <li><label><input type="radio" name="employment" value="< 1 year"> Less than 1 year</label></li>
+                    <li><label><input type="radio" name="employment" value=">= 7 years"> More than 7 years</label></li>
+                    <li><label><input type="radio" name="employment" value="unemployed"> Unemployed</label></li>
+                </ul>
+            </div>
+
+            <!-- 15. Personal Status and Sex -->
+            <div class="question">
+                <p>15. What is your personal status?</p>
+                <ul class="options">
+                    <li><label><input type="radio" name="personal_status" value="female : divorced/separated/married" required> Female: divorced/separated/married</label></li>
+                    <li><label><input type="radio" name="personal_status" value="male : divorced/separated"> Male: divorced/separated</label></li>
+                    <li><label><input type="radio" name="personal_status" value="male : married/widowed"> Male: married/widowed</label></li>
+                    <li><label><input type="radio" name="personal_status" value="male : single"> Male: single</label></li>
+                </ul>
+            </div>
+
+            <!-- 16. Other Debtors/Guarantors -->
+            <div class="question">
+                <p>16. Do you have any other parties involved?</p>
+                <ul class="options">
+                    <li><label><input type="radio" name="other_parties" value="co-applicant" required> Co-applicant</label></li>
+                    <li><label><input type="radio" name="other_parties" value="guarantor"> Guarantor</label></li>
+                    <li><label><input type="radio" name="other_parties" value="none"> None</label></li>
+                </ul>
+            </div>
+
+            <!-- 17. Property -->
+            <div class="question">
+                <p>17. What is the magnitude of your property?</p>
+                <ul class="options">
+                    <li><label><input type="radio" name="property_magnitude" value="if not A121 : building society savings agreement/ life insurance" required> Building society savings agreement/ life insurance</label></li>
+                    <li><label><input type="radio" name="property_magnitude" value="if not A121/A122 : car or other, not in attribute 6"> Car or other</label></li>
+                    <li><label><input type="radio" name="property_magnitude" value="real estate"> Real estate</label></li>
+                    <li><label><input type="radio" name="property_magnitude" value="unknown / no property"> Unknown/no property</label></li>
+                </ul>
+            </div>
+
+            <!-- 18. Other Installment Plans -->
+            <div class="question">
+                <p>18. Do you have any other payment plans?</p>
+                <ul class="options">
+                    <li><label><input type="radio" name="other_payment_plans" value="bank" required> Bank</label></li>
+                    <li><label><input type="radio" name="other_payment_plans" value="none"> None</label></li>
+                    <li><label><input type="radio" name="other_payment_plans" value="stores"> Stores</label></li>
+                </ul>
+            </div>
+
+            <!-- 19. Housing -->
+            <div class="question">
+                <p>19. What is your housing situation?</p>
+                <ul class="options">
+                    <li><label><input type="radio" name="housing" value="for free" required> For free</label></li>
+                    <li><label><input type="radio" name="housing" value="own"> Own</label></li>
+                    <li><label><input type="radio" name="housing" value="rent"> Rent</label></li>
+                </ul>
+            </div>
+
+            <!-- 20. Job -->
+            <div class="question">
+                <p>20. What is your job status?</p>
+                <ul class="options">
+                    <li><label><input type="radio" name="job" value="management/ self-employed/ highly qualified employee/ officer" required> Management/ self-employed/ highly qualified employee/ officer</label></li>
+                    <li><label><input type="radio" name="job" value="skilled employee / official"> Skilled employee / official</label></li>
+                    <li><label><input type="radio" name="job" value="unemployed/ unskilled - non-resident"> Unemployed/ unskilled - non-resident</label></li>
+                    <li><label><input type="radio" name="job" value="unskilled - resident"> Unskilled - resident</label></li>
+                </ul>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="question">
+                <button type="submit" class="submit-btn">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
