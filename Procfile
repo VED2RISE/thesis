@@ -1,1 +1,1 @@
-web: gunicorn thesis:app
+web:gunicorn thesis:app
